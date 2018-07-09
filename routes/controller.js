@@ -3,10 +3,13 @@ module.exports = function (app) {
     const db = require("../models");
     const cheerio = require("cheerio");
     const request = require("request");
+    app.get("/", function (req, res) {
+        res.render('index');
+    });
     // A GET route for scraping the MMORPG website
     app.get("/scrape", function (req, res) {
         // First, we grab the body of the html with request
-        request("http://www.mmorpg.com/news", function(error, response, html) {
+        request("http://www.mmorpg.com/news", function (error, response, html) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             const $ = cheerio.load(html);
 
@@ -46,4 +49,4 @@ module.exports = function (app) {
         });
     });
 
-}
+} //end of export

@@ -1,4 +1,5 @@
 .navHeaderLogo {
-    margin: 7% 5px;
+  margin-left: 15px;
     font-size: 40px;
+    display: inline;
 }

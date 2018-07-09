@@ -1,10 +1,11 @@
 module.exports = function (app) {
-    // Our scraping tools
+    // Our scraping tools and DB
     const db = require("../models");
     const cheerio = require("cheerio");
     const request = require("request");
+    // Landing page displaying all scrapped news saved in DB
     app.get("/", function (req, res) {
-        db.Article.find({}).then(function (results) {
+        db.Article.find({}).sort({_id: -1}).then(function (results) {
             res.render('index', { articles: results });
         });
     });
@@ -15,12 +16,12 @@ module.exports = function (app) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             const $ = cheerio.load(html);
 
-            // Now, we grab every h2 within an article tag, and do the following:
+            // Now, we grab every new_newspost class within an div tag, and do the following:
             $(".news_newspost").each(function (i, element) {
                 // Save an empty result object
                 const result = {};
 
-                // Add the text and href of every link, and save them as properties of the result object
+                // Add the text and href of every title, info, link, img and save them as properties of the result object
                 result.title = $(this)
                     .children("a").children('img')
                     .attr("alt");
@@ -49,6 +50,8 @@ module.exports = function (app) {
             // If we were able to successfully scrape and save an Article, send a message to the client
             res.send("Scrape Complete");
         });
+        // Sends user back to homepage after scrape is complete
+        res.redirect("/");
     });
 
 } //end of export

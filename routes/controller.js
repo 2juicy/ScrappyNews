@@ -49,37 +49,3 @@ module.exports = function (app) {
     });
 
 }
-
-// working scrape section
-// var cheerio = require("cheerio");
-// var request = require("request");
-
-// // Make a request call to grab the HTML body from the site of your choice
-// request("http://www.mmorpg.com/news", function(error, response, html) {
-
-//   // Load the HTML into cheerio and save it to a variable
-//   // '$' becomes a shorthand for cheerio's selector commands, much like jQuery's '$'
-//   var $ = cheerio.load(html);
-// $(".news_newspost").each(function (i, element) {
-//   const result = {};
-
-//                 // Add the text and href of every link, and save them as properties of the result object
-//                 result.title = $(this)
-//                     .children("h1 a")
-//                     .text();
-//                 result.info = $(this)
-//                     .children("p")
-//                     .text();
-//                 result.link = $(this)
-//                     .children("a")
-//                     .attr("href");
-
-//   // Select each element in the HTML body from which you want information.
-//   // NOTE: Cheerio selectors function similarly to jQuery's selectors,
-//   // but be sure to visit the package's npm page to see how it works
-
-
-//   // Log the results once you've looped through each of the elements found with cheerio
-//   console.log(result);
-// });
-// });

@@ -1,5 +1,6 @@
 module.exports = function (app) {
     // Our scraping tools
+    const db = require("../models");
     const cheerio = require("cheerio");
     const request = require("request");
     // A GET route for scraping the MMORPG website
@@ -7,7 +8,7 @@ module.exports = function (app) {
         // First, we grab the body of the html with request
         request("http://www.mmorpg.com/news", function(error, response, html) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
-            const $ = cheerio.load(response.data);
+            const $ = cheerio.load(html);
 
             // Now, we grab every h2 within an article tag, and do the following:
             $(".news_newspost").each(function (i, element) {

@@ -3,9 +3,6 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
-// Require all models
-const db = require("./models");
-
 const PORT = 3000;
 
 // Initialize Express
@@ -30,6 +27,11 @@ const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlin
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI);
+
+// Import routes and give the server access to them. 
+// Routes
+// =============================================================
+require("./routes/controller.js")(app);
 
 // Start the server
 app.listen(PORT, () => console.log(`\nListening on port http://localhost:${PORT}`));

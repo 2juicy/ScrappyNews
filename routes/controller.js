@@ -19,14 +19,17 @@ module.exports = function (app) {
 
                 // Add the text and href of every link, and save them as properties of the result object
                 result.title = $(this)
-                    .children("h1 a")
-                    .text();
+                    .children("a").children('img')
+                    .attr("alt");
                 result.info = $(this)
                     .children("p")
                     .text();
                 result.link = $(this)
                     .children("a")
                     .attr("href");
+                result.img = $(this)
+                    .children('a').children('img')
+                    .attr('src');
 
                 // Create a new Article using the `result` object built from scraping
                 db.Article.create(result)
@@ -44,7 +47,7 @@ module.exports = function (app) {
             res.send("Scrape Complete");
         });
     });
-    
+
 }
 
 // working scrape section

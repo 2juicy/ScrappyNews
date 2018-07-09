@@ -9,6 +9,12 @@ module.exports = function (app) {
             res.render('index', { articles: results });
         });
     });
+    // Comment page
+    app.get("/note/:id", function (req, res){
+        db.Article.find({_id: req.params.id}).then(function (results){
+            res.render('note', {articles: results});
+        });
+    });
     // A GET route for scraping the MMORPG website
     app.get("/scrape", function (req, res) {
         // First, we grab the body of the html with request

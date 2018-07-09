@@ -4,7 +4,9 @@ module.exports = function (app) {
     const cheerio = require("cheerio");
     const request = require("request");
     app.get("/", function (req, res) {
-        res.render('index');
+        db.Article.find({}).then(function (results) {
+            res.render('index', { articles: results });
+        });
     });
     // A GET route for scraping the MMORPG website
     app.get("/scrape", function (req, res) {

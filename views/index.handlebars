@@ -1,4 +1,13 @@
 <h1>Check out the latest in gaming news</h1>
-<hr>
-
-<h2>Click scrape to get the latest in gamings news!</h2>
+{{#each articles}}
+<div class="container">
+    <h2>{{title}}</h2>
+    <p>{{info}}</p>
+    <img src="{{img}}" alt="No Image Found">
+    <p>
+        <a href="{{link}}">
+            <button class='hero-select btn btn-large waves-effect waves-light grey darken-3 white-text right'>Read More</button>
+        </a>
+    </p>
+</div>
+{{/each}}

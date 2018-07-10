@@ -1,4 +1,4 @@
-
+{{#if articles}}
 {{#each articles}}
 <div class="center container">
     <h2>{{title}}</h2>
@@ -6,5 +6,6 @@
 </div>
 <hr>
 {{/each}}
-
-<a href="#"><h3 class="center">Try Scrapping for New Results!</h2></a>
+{{else}}
+<a href="/scrape"><h3 class="center">Try Scrapping for New Results!</h2></a>
+{{/if}}

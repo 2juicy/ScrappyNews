@@ -11,16 +11,16 @@ module.exports = function (app) {
     });
     // Comment page
     app.get("/note/:id", function (req, res) {
-        db.Article.find({ _id: req.params.id }).populate("notes").then(function (results) {
+        db.Article.findOne({ _id: req.params.id }).populate("notes").then(function (results) {
             res.render('note', { articles: results });
         });
     });
     // Post to leave a comment
-    app.post('note/:id', function (req, res) {
+    app.post('/note/:id', function (req, res) {
         db.Note.create(req.body).then(function (dbNote) {
-            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: dbNote._id } }, { new: true });
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, {$push: { notes: dbNote._id }}, { new: true });
         }).then(function (dbArticle) {
-            res.redirect("/note/" + req.params.id);
+            res.redirect('/note/' + req.params.id);
         });
     });
     // A GET route for scraping the MMORPG website

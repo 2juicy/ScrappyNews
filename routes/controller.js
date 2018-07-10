@@ -49,7 +49,7 @@ module.exports = function (app) {
                     .children('a').children('img')
                     .attr('src');
                 // Create a new Article using the `result` object built from scraping
-                db.Article.create(result)
+                db.Article.update({title: result.title}, {$set: {title: result.title, info: result.info, img: result.img, link: result.link}}, {upsert: true})
                     .then(function (dbArticle) {
                         // View the added result in the console
                         console.log(dbArticle);

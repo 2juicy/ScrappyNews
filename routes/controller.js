@@ -5,14 +5,22 @@ module.exports = function (app) {
     const request = require("request");
     // Landing page displaying all scrapped news saved in DB
     app.get("/", function (req, res) {
-        db.Article.find({}).sort({_id: -1}).then(function (results) {
+        db.Article.find({}).sort({ _id: -1 }).then(function (results) {
             res.render('index', { articles: results });
         });
     });
     // Comment page
-    app.get("/note/:id", function (req, res){
-        db.Article.find({_id: req.params.id}).then(function (results){
-            res.render('note', {articles: results});
+    app.get("/note/:id", function (req, res) {
+        db.Article.find({ _id: req.params.id }).populate("notes").then(function (results) {
+            res.render('note', { articles: results });
+        });
+    });
+    // Post to leave a comment
+    app.post('note/:id', function (req, res) {
+        db.Note.create(req.body).then(function (dbNote) {
+            return db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: dbNote._id } }, { new: true });
+        }).then(function (dbArticle) {
+            res.redirect("/note/" + req.params.id);
         });
     });
     // A GET route for scraping the MMORPG website
@@ -52,12 +60,13 @@ module.exports = function (app) {
                         return res.json(err);
                     });
             });
-
-            // If we were able to successfully scrape and save an Article, send a message to the client
-            res.send("Scrape Complete");
+            res.redirect("/");
+        });        
+    });
+    app.get("/clear", function (req, res) {
+        db.Article.remove().then(function (dbArticle) {
+            res.redirect("/");
         });
-        // Sends user back to homepage after scrape is complete
-        res.redirect("/");
     });
 
 } //end of export

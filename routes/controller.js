@@ -48,7 +48,6 @@ module.exports = function (app) {
                 result.img = $(this)
                     .children('a').children('img')
                     .attr('src');
-
                 // Create a new Article using the `result` object built from scraping
                 db.Article.create(result)
                     .then(function (dbArticle) {

@@ -1,6 +1,6 @@
 {{#each articles}}
 <div class="center container">
-    <h2>{{title}}</h2>
+    <h4>{{title}}</h4>
     <p>{{info}}</p>
     <img class="responsive-img" src="{{img}}" alt="No Image Found">
     <div class="row center">
@@ -10,7 +10,7 @@
         <p>{{date}}</p>
         {{/each}}
         <form action="/note/{{_id}}" method="POST">
-            <h3>Leave A Comment!</h3>
+            <h4>Leave A Comment!</h4>
             <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
                 <input type="text" placeholder="Name" name="title">

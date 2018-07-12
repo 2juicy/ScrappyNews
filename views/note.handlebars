@@ -2,9 +2,11 @@
     <h4>{{articles.title}}</h4>
     <p>{{articles.info}}</p>
     <img class="responsive-img" src="{{articles.img}}" alt="No Image Found">
+    <div class="break">
     <a href="https://www.mmorpg.com{{articles.link}}" target="_blank">
         <button class='btn btn-large waves-effect waves-light grey darken-3 white-text center'>Read More</button>
     </a>
+    </div>
     <div class="row center">
         <form action="/note/{{articles._id}}" method="POST">
             <div class="input-field">
@@ -14,7 +16,7 @@
             <div class="input-field">
                 <i class="material-icons prefix">comment</i>
                 <input type="text" placeholder="We would love to hear from you! Leave a comment!" name="body">
-            </div>
+            </div>            
             <button type='submit' class='btn btn-large waves-effect waves-light red darken-3 white-text center'>Comment</button>
         </form>
     </div>

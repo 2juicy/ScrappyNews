@@ -1,13 +1,14 @@
-.navHeaderLogo {
-  margin-left: 15px;
-    font-size: 40px;
-    display: inline;
+.brand-logo {
+    font-weight:bolder;
+    margin-left: 1em;
 }
 .comments{
   font-size:22px;
   font-style:italic;
 }
-
 .comtitle{
   font-size: 26px;
+}
+.break{
+  max-width: 100%;
 }

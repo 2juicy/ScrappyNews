@@ -30,10 +30,10 @@ module.exports = function(app) {
         );
       })
       .then(function(dbArticle) {
-        res.redirect("/note/" + req.params.id);
+        res.redirect("back");
       })
       .catch(function(err) {
-        res.redirect(400, "back");
+        res.redirect("/note/" + req.params.id);
       });
   });
   // A GET route for scraping the MMORPG website

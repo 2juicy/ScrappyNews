@@ -8,8 +8,8 @@
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "mongoose": "^5.2.1",
-    "morgan": "^1.9.0",
+    "mongoose": "^5.4.15",
+    "morgan": "^1.9.1",
     "request": "^2.87.0"
   },
   "devDependencies": {

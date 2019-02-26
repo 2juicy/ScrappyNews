@@ -21,7 +21,6 @@ module.exports = function(app) {
   });
   // Post to leave a comment
   app.post("/note/:id", function(req, res) {
-    if (!req) return;
     db.Note.create(req.body)
       .then(function(dbNote) {
         return db.Article.findOneAndUpdate(
@@ -32,6 +31,9 @@ module.exports = function(app) {
       })
       .then(function(dbArticle) {
         res.redirect("/note/" + req.params.id);
+      })
+      .catch(function(err) {
+        res.redirect(400, "back");
       });
   });
   // A GET route for scraping the MMORPG website

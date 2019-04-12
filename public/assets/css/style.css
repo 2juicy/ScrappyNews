@@ -1,14 +1,14 @@
 .brand-logo {
-    font-weight:bolder;
-    margin-left: 1em;
+  font-weight: bolder;
+  margin-left: 1em;
 }
-.comments{
-  font-size:22px;
-  font-style:italic;
+.comments {
+  font-size: 22px;
+  font-style: italic;
 }
-.comtitle{
+.comtitle {
   font-size: 26px;
 }
-.break{
+.break {
   max-width: 100%;
 }

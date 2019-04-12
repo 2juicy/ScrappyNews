@@ -4,9 +4,9 @@
 
 ## NPM Modules
 
-* express
-* express-handlebars
-* mongoose
-* body-parser
-* cheerio
-* request
+* [Express](https://www.npmjs.com/package/express)
+* [Express Handlebars](https://www.npmjs.com/package/express-handlebars)
+* [Mongoose](https://mongoosejs.com/)
+* [Body Parser](https://www.npmjs.com/package/body-parser)
+* [Cheerio](https://cheerio.js.org/)
+* [Request](https://www.npmjs.com/package/request)

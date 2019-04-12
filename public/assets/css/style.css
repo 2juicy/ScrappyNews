@@ -12,3 +12,10 @@
 .break {
   max-width: 100%;
 }
+h2 {
+  margin: 1rem 0 1rem 0;
+}
+#source {
+  font-style: italic;
+  text-decoration: underline;
+}

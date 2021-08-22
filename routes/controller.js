@@ -62,9 +62,10 @@ module.exports = function (app) {
           .children("h3")
           .children("a")
           .attr("href");
-        result.img =
-          "https:" +
-          $(this).children("figure").children("img").attr("data-cfsrc");
+        result.img = $(this)
+          .children("figure")
+          .children("img")
+          .attr("data-cfsrc");
         // Create a new Article using the `result` object built from scraping
         db.Article.updateMany(
           { title: result.title },

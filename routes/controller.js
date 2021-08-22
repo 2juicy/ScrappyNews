@@ -92,7 +92,7 @@ module.exports = function (app) {
     });
   });
   app.get("/clear", function (req, res) {
-    db.Article.remove().then(function (dbArticle) {
+    db.Article.deleteMany().then(function (dbArticle) {
       res.redirect("/");
     });
   });

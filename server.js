@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 
@@ -12,8 +11,8 @@ const app = express();
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
-// Use body-parser for handling form submissions
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
@@ -28,6 +27,7 @@ mongoose.connect(MONGODB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 // Set Handlebars.

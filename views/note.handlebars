@@ -1,30 +1,42 @@
 <div class="center container">
-    <h4>{{articles.title}}</h4>
-    <p>{{articles.info}}</p>
-    <img class="responsive-img" src="{{articles.img}}" alt="No Image Found">
-    <div class="break">
+  <h4>{{articles.title}}</h4>
+  <p>{{articles.info}}</p>
+  <img class="responsive-img" src="{{articles.img}}" alt="No Image Found" />
+  <div class="break">
     <a href="https://www.mmorpg.com{{articles.link}}" target="_blank">
-        <button class='btn btn-large waves-effect waves-light grey darken-3 white-text center'>Read More</button>
+      <button
+        class="btn btn-large waves-effect waves-light grey darken-3 white-text center"
+      >Read More</button>
     </a>
-    </div>
-    <div class="row center">
-        <form action="/note/{{articles._id}}" method="POST">
-            <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <input type="text" placeholder="Name" name="title">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">comment</i>
-                <input type="text" placeholder="We would love to hear from you! Leave a comment!" name="body">
-            </div>            
-            <button type='submit' class='btn btn-large waves-effect waves-light red darken-3 white-text center'>Comment</button>
-        </form>
-    </div>
-    {{#if articles.notes}} {{#each articles.notes}}
-    <p class='comtitle'>{{title}} said:
-        <span class='comments'>{{body}}</span>
-    </p>
-    {{/each}} {{else}}
+  </div>
+  <div class="row center">
+    <form action="/note/{{articles._id}}" method="POST">
+      <div class="input-field">
+        <i class="material-icons prefix">perm_identity</i>
+        <input type="text" placeholder="Name" name="title" />
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">comment</i>
+        <input
+          type="text"
+          placeholder="We would love to hear from you! Leave a comment!"
+          name="body"
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-large waves-effect waves-light red darken-3 white-text center"
+      >Comment</button>
+    </form>
+  </div>
+  {{#if articles.notes}}
+    {{#each articles.notes}}
+      <p class="comtitle">{{title}}
+        said:
+        <span class="comments">{{body}}</span>
+      </p>
+    {{/each}}
+  {{else}}
     <h3>Be the 1st to leave a comment!</h3>
-    {{/if}}
+  {{/if}}
 </div>

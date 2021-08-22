@@ -1,11 +1,15 @@
 {{#if articles}}
-{{#each articles}}
-<div class="center container">
-    <h2>{{title}}</h2>
-    <a href="/note/{{_id}}"><img class="responsive-img" src="{{img}}" alt="No Image Found"></a>
-</div>
-<hr>
-{{/each}}
+  {{#each articles}}
+    <div class="center container">
+      <h2>{{title}}</h2>
+      <a href="/note/{{_id}}"><img
+          class="responsive-img"
+          src="{{img}}"
+          alt="No Image Found"
+        /></a>
+    </div>
+    <hr />
+  {{/each}}
 {{else}}
-<a href="/scrape"><h3 class="center">Try Scrapping for New Results!</h2></a>
+  <a href="/scrape"><h3 class="center">Try Scrapping for New Results!</h3></a>
 {{/if}}

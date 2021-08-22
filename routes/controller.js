@@ -23,7 +23,6 @@ module.exports = function (app) {
   });
   // Post to leave a comment
   app.post("/note/:id", function (req, res) {
-    console.log(req.body);
     db.Note.create(req.body)
       .then(function (dbNote) {
         return db.Article.findOneAndUpdate(
@@ -81,7 +80,7 @@ module.exports = function (app) {
         )
           .then(function (dbArticle) {
             // View the added result in the console
-            // console.log(dbArticle);
+            console.log(dbArticle);
           })
           .catch(function (err) {
             // If an error occurred, send it to the client

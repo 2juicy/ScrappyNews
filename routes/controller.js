@@ -18,6 +18,7 @@ module.exports = function (app) {
       .lean()
       .populate("notes")
       .then(function (results) {
+        console.log(results);
         res.render("note", { articles: results });
       });
   });
@@ -49,23 +50,10 @@ module.exports = function (app) {
         // Save an empty result object
         const result = {};
         // Add the text and href of every title, info, link, img and save them as properties of the result object
-        result.title = $(this).children("figure").children("img").attr("alt");
-        result.info = $(this)
-          .children("div")
-          .children("div")
-          .children("p")
-          .text();
-        result.link = $(this)
-          .children("div")
-          .children("div")
-          .children("div")
-          .children("h3")
-          .children("a")
-          .attr("href");
-        result.img = $(this)
-          .children("figure")
-          .children("img")
-          .attr("data-cfsrc");
+        result.title = $(this).find("figure > img").attr("alt");
+        result.info = $(this).find("div > div > p").text();
+        result.link = $(this).find("div > div> div>h3>a").attr("href");
+        result.img = $(this).find("figure > img").attr("data-cfsrc");
         // Create a new Article using the `result` object built from scraping
         db.Article.updateMany(
           { title: result.title },
